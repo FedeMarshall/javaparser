@@ -21,4 +21,4 @@
   
   - Maven install corre los unit test y luego genera los artefactos
   
- ### El flujo debería ser, clean, luego test y por último install (si si, el install corre los test pero tiene sentido correr antes los test para evitar que, si alguno te falla, generes el artefacto).
+### El flujo debería ser, clean, luego test y por último install (si si, el install corre los test pero tiene sentido correr antes los test para evitar que, si alguno te falla, generes el artefacto).
