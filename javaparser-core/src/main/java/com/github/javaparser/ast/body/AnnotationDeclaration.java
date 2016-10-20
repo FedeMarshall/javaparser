@@ -33,6 +33,7 @@ import com.github.javaparser.ast.visitor.VoidVisitor;
 
 /**
  * @author Julio Vilmar Gesser
+ * 
  */
 public final class AnnotationDeclaration extends TypeDeclaration<AnnotationDeclaration> {
 
