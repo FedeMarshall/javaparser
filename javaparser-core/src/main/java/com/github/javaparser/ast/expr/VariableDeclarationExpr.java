@@ -26,6 +26,7 @@ import static com.github.javaparser.utils.Utils.ensureNotNull;
 import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.github.javaparser.Range;
@@ -173,4 +174,26 @@ public final class VariableDeclarationExpr extends Expression
         this.vars = vars;
         setAsParentNodeOf(this.vars);
     }
+    
+	@Override
+	public void halteadNumbers(Map<String, Integer> operands,
+			Map<String, Integer> operators) {
+		//Estamos en Variable Declaration Exp, el Operator es el "="
+		for (VariableDeclarator varDeclarator : vars) {
+			
+			if(operators.get("VariableDeclarationExpr") != null){
+				operators.put("VariableDeclarationExpr", operators.get("VariableDeclarationExpr")+1);
+			}else{
+				operators.put("VariableDeclarationExpr", 1);
+			}
+			
+			String unparsed = varDeclarator.getId().getName(); //El literal de la variable declarada.
+			
+			if(operands.get(unparsed)!=null){
+				operands.put(unparsed, operands.get(unparsed)+1);
+			}else{
+				operands.put(unparsed, 1);
+			}			
+		}
+	}   
 }

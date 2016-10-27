@@ -31,6 +31,7 @@ import com.github.javaparser.ast.visitor.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Abstract class for all nodes of the AST.
@@ -91,6 +92,22 @@ public abstract class Node implements Cloneable {
      */
     public abstract <A> void accept(VoidVisitor<A> v, A arg);
 
+    /**
+     * Método agregado para el obligatorio de Compiladores.
+     * Halstead Complexity Measures Method.
+     * 
+     * Calculates the numbers required for the Halstead complexity measures.
+     * 
+     * More info: http://en.wikipedia.org/wiki/Halstead_complexity_measures
+     */
+	//public abstract void halteadNumbers(Map<String, Integer> operands, Map<String, Integer> operators);
+	
+	public void halteadNumbers(Map<String, Integer> operands, Map<String, Integer> operators){
+		for (Node node : childrenNodes) {
+			node.halteadNumbers(operands, operators);
+		}
+	}
+    
     /**
      * This is a comment associated with this node.
      *
