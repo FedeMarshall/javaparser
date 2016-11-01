@@ -1,3 +1,4 @@
+package com.github.javaparser.metric.utilities;
 
 import java.util.HashMap;
 import com.github.javaparser.ast.CompilationUnit;
@@ -5,15 +6,19 @@ import com.github.javaparser.ast.CompilationUnit;
 public class HalsteadComplexityMeasures {
 	
 	public final CompilationUnit javaProgram;
-	public final HashMap<String, Integer> operands = new HashMap<String, Integer>();
-	public final HashMap<String, Integer> operators = new HashMap<String, Integer>();
-	public final int operatorCount, operandCount, uniqueOperatorCount, uniqueOperandCount;
+	public HashMap<String, Integer> operands = new HashMap<String, Integer>();
+	public HashMap<String, Integer> operators = new HashMap<String, Integer>();
+	public int operatorCount, operandCount, uniqueOperatorCount, uniqueOperandCount;
 	
 	public HalsteadComplexityMeasures(CompilationUnit program) {
 		this.javaProgram = program;
-		HashMap<String, Integer> operands = new HashMap<String, Integer>();
-		HashMap<String, Integer> operators = new HashMap<String, Integer>();
-		program.halteadNumbers(operands, operators);
+		this.operandCount = 0;
+		this.operandCount = 0;
+		this.uniqueOperatorCount = 0;
+		this.uniqueOperandCount = 0;
+	}
+	
+	public void CalculateUniqueCounts(){
 		// Unique counts.
 		this.uniqueOperatorCount = operators.size();
 		this.uniqueOperandCount = operands.size();
