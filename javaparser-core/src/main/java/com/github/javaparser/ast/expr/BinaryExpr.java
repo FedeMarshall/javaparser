@@ -21,6 +21,8 @@
  
 package com.github.javaparser.ast.expr;
 
+import java.util.Map;
+
 import com.github.javaparser.Range;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
@@ -108,5 +110,5 @@ public final class BinaryExpr extends Expression {
     public void setRight(Expression right) {
         this.right = right;
 		setAsParentNodeOf(this.right);
-    }
+    }    
 }
