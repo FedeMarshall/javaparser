@@ -21,17 +21,21 @@
 
 package com.github.javaparser.ast;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import com.github.javaparser.Position;
 import com.github.javaparser.Range;
 import com.github.javaparser.ast.comments.BlockComment;
 import com.github.javaparser.ast.comments.Comment;
 import com.github.javaparser.ast.comments.LineComment;
-import com.github.javaparser.ast.visitor.*;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import com.github.javaparser.ast.visitor.CloneVisitor;
+import com.github.javaparser.ast.visitor.DumpVisitor;
+import com.github.javaparser.ast.visitor.EqualsVisitor;
+import com.github.javaparser.ast.visitor.GenericVisitor;
+import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metric.utilities.HalsteadComplexityMeasures;
 
 /**
  * Abstract class for all nodes of the AST.
@@ -102,9 +106,9 @@ public abstract class Node implements Cloneable {
      */
 	//public abstract void halteadNumbers(Map<String, Integer> operands, Map<String, Integer> operators);
 	
-	public void halteadNumbers(Map<String, Integer> operands, Map<String, Integer> operators){
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics){
 		for (Node node : childrenNodes) {
-			node.halteadNumbers(operands, operators);
+			node.halsteadNumbers(halsteadMetrics);
 		}
 	}
     

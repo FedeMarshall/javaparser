@@ -2,6 +2,7 @@ import java.io.FileInputStream;
 
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.metric.utilities.HalsteadComplexityMeasures;
 
 
 public class CuPrinter {
@@ -22,6 +23,9 @@ public class CuPrinter {
         System.out.println(cu.toString());
         
         HalsteadComplexityMeasures halsteadMeasures = new HalsteadComplexityMeasures(cu);
+        // llamamamos al metodo de Node para ejecutar haltstead metrics
+        halsteadMeasures.javaProgram.halsteadNumbers(halsteadMeasures);
+        halsteadMeasures.CalculateUniqueCounts();
         System.out.println(halsteadMeasures.vocabulary());
         System.out.println(halsteadMeasures.length());
         System.out.println(halsteadMeasures.volume());

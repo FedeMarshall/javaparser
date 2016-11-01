@@ -22,8 +22,10 @@
 package com.github.javaparser.ast.expr;
 
 import com.github.javaparser.Range;
+import com.github.javaparser.ast.body.VariableDeclarator;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metric.utilities.HalsteadComplexityMeasures;
 
 /**
  * @author Julio Vilmar Gesser
@@ -73,6 +75,30 @@ public final class BinaryExpr extends Expression {
     	setRight(right);
     	setOperator(op);
     }
+    
+    @Override
+    public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics){
+		// seteo el operador
+    	if (halsteadMetrics.operators.get(op.name()) != null){
+			halsteadMetrics.operators.put(op.name(), 
+				halsteadMetrics.operators.get(op.name()) + 1);
+		}
+		else{
+			halsteadMetrics.operators.put(op.name(), 1);
+		}
+		
+		// seteo los operandos
+	  	/*if (left instanceof VariableDeclarationExpr){
+	  		VariableDeclarationExpr
+	  		if (halsteadMetrics.operands.get(op.name()) != null){
+				halsteadMetrics.operands.put(op.name(), 
+					halsteadMetrics.operands.get(op.name()) + 1);
+			}
+			else{
+				halsteadMetrics.operands.put(op.name(), 1);
+			}
+	  	}*/
+	}
 
     @Override
     public <R, A> R accept(GenericVisitor<R, A> v, A arg) {
@@ -109,4 +135,6 @@ public final class BinaryExpr extends Expression {
         this.right = right;
 		setAsParentNodeOf(this.right);
     }
+    
+    
 }
