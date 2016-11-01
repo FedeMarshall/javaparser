@@ -1,4 +1,4 @@
-package com.github.javaparser.metric.utilities;
+
 import java.util.HashMap;
 import com.github.javaparser.ast.CompilationUnit;
 

@@ -38,6 +38,7 @@ import com.github.javaparser.ast.nodeTypes.NodeWithType;
 import com.github.javaparser.ast.type.Type;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metric.utilities.HalsteadComplexityMeasures;
 
 /**
  * @author Julio Vilmar Gesser
@@ -176,24 +177,26 @@ public final class VariableDeclarationExpr extends Expression
     }
     
 	@Override
-	public void halteadNumbers(Map<String, Integer> operands,
-			Map<String, Integer> operators) {
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
 		//Estamos en Variable Declaration Exp, el Operator es el "="
 		for (VariableDeclarator varDeclarator : vars) {
-			
-			if(operators.get("VariableDeclarationExpr") != null){
-				operators.put("VariableDeclarationExpr", operators.get("VariableDeclarationExpr")+1);
+			/*
+			if(halsteadMetrics.operators.get("VariableDeclarationExpr") != null){
+				halsteadMetrics.operators.put("VariableDeclarationExpr", halsteadMetrics.operators.get("VariableDeclarationExpr")+1);
 			}else{
-				operators.put("VariableDeclarationExpr", 1);
+				halsteadMetrics.operators.put("VariableDeclarationExpr", 1);
 			}
 			
 			String unparsed = varDeclarator.getId().getName(); //El literal de la variable declarada.
 			
-			if(operands.get(unparsed)!=null){
-				operands.put(unparsed, operands.get(unparsed)+1);
+			if(halsteadMetrics.operands.get(unparsed)!=null){
+				halsteadMetrics.operands.put(unparsed, halsteadMetrics.operands.get(unparsed)+1);
 			}else{
-				operands.put(unparsed, 1);
-			}			
+				halsteadMetrics.operands.put(unparsed, 1);
+			}
+			*/
+			
+			varDeclarator.getInit().halsteadNumbers(halsteadMetrics);
 		}
 	}   
 }
