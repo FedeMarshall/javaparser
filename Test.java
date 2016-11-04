@@ -1,16 +1,17 @@
 public class Test {
 
-    public int foo(int e) {
-        int a = 20, b=10;
-		int c = a + b;
-        return a;
-    }
-
-    public void abc() {
-		String var = "var";
-    }
-
-    public int def() {
-        return 10;
+    public void sort(int[] a, int n){
+    	int i, j, t;
+    	if (n < 2) return;
+    	for (i = 0; i < n-1; i++){
+    		for (j = i+1; j < n; j++){
+    			if (a[i] > a[j]){
+    				t = a[i];
+    				a[i] = a[j];
+    				a[j] = t;
+    				
+    			}
+    		}
+    	}
     }
 }

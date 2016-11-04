@@ -29,6 +29,7 @@ import com.github.javaparser.ast.nodeTypes.NodeWithType;
 import com.github.javaparser.ast.type.Type;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metric.utilities.HalsteadComplexityMeasures;
 
 import static com.github.javaparser.utils.Utils.ensureNotNull;
 
@@ -89,6 +90,11 @@ public final class ArrayCreationExpr extends Expression implements NodeWithType<
     public <A> void accept(VoidVisitor<A> v, A arg) {
         v.visit(this, arg);
     }
+    
+    @Override
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+		super.halsteadNumbers(halsteadMetrics);
+	}
 
     @Override
     public int getArrayCount() {

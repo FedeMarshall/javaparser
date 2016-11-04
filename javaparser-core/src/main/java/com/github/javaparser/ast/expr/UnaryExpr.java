@@ -24,6 +24,7 @@ package com.github.javaparser.ast.expr;
 import com.github.javaparser.Range;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metric.utilities.HalsteadComplexityMeasures;
 
 /**
  * @author Julio Vilmar Gesser
@@ -65,6 +66,13 @@ public final class UnaryExpr extends Expression {
 
 	@Override public <A> void accept(final VoidVisitor<A> v, final A arg) {
 		v.visit(this, arg);
+	}
+	
+	@Override
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+		halsteadMetrics.agregarOperador(op.name());
+		
+		expr.halsteadNumbers(halsteadMetrics);
 	}
 
 	public Expression getExpr() {

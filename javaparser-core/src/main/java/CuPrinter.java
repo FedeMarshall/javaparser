@@ -25,7 +25,7 @@ public class CuPrinter {
         HalsteadComplexityMeasures halsteadMeasures = new HalsteadComplexityMeasures(cu);
         // llamamamos al metodo de Node para ejecutar haltstead metrics
         halsteadMeasures.javaProgram.halsteadNumbers(halsteadMeasures);
-        halsteadMeasures.CalculateUniqueCounts();
+        halsteadMeasures.calculateUniqueCounts();
         System.out.println(halsteadMeasures.vocabulary());
         System.out.println(halsteadMeasures.length());
         System.out.println(halsteadMeasures.volume());

@@ -18,7 +18,25 @@ public class HalsteadComplexityMeasures {
 		this.uniqueOperandCount = 0;
 	}
 	
-	public void CalculateUniqueCounts(){
+	public void agregarOperando(String clave){
+		if (operands.get(clave) != null){
+			operands.put(clave, operands.get(clave) + 1);
+		}
+		else{
+			operands.put(clave, 1);
+		}
+	}
+	
+	public void agregarOperador(String clave){
+		if (operators.get(clave) != null){
+			operators.put(clave, operators.get(clave) + 1);
+		}
+		else{
+			operators.put(clave, 1);
+		}
+	}
+	
+	public void calculateUniqueCounts(){
 		// Unique counts.
 		this.uniqueOperatorCount = operators.size();
 		this.uniqueOperandCount = operands.size();

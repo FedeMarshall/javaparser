@@ -25,6 +25,7 @@ import com.github.javaparser.Range;
 import com.github.javaparser.ast.nodeTypes.NodeWithName;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metric.utilities.HalsteadComplexityMeasures;
 
 /**
  * @author Julio Vilmar Gesser
@@ -64,6 +65,12 @@ public class NameExpr extends Expression implements NodeWithName<NameExpr> {
         return this;
 	}
 
+	@Override
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+		if (name != null){
+			halsteadMetrics.agregarOperando(name);
+		}
+	}
 
 	/**
 	 * Creates a new {@link NameExpr} from a qualified name.<br>
