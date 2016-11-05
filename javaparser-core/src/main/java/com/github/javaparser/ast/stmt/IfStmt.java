@@ -73,14 +73,10 @@ public final class IfStmt extends Statement {
 		
 		if (thenStmt != null){
 			thenStmt.halsteadNumbers(halsteadMetrics);
-			halsteadMetrics.agregarOperador("{");
-			halsteadMetrics.agregarOperador("}");
 		}
 		if (elseStmt != null){
 			halsteadMetrics.agregarOperador("else");
 			elseStmt.halsteadNumbers(halsteadMetrics);
-			halsteadMetrics.agregarOperador("{");
-			halsteadMetrics.agregarOperador("}");
 		}
 	}
 

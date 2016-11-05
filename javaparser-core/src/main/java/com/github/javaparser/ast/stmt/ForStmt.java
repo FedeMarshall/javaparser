@@ -80,6 +80,8 @@ public final class ForStmt extends Statement implements NodeWithBody<ForStmt> {
 	@Override
 	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
 		halsteadMetrics.agregarOperador("for");
+		halsteadMetrics.agregarOperador("(");
+		halsteadMetrics.agregarOperador(")");
 		
 		// analizo el inicializador del for
 		for (Expression exp: init){

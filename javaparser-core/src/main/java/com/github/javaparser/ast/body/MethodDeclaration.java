@@ -46,6 +46,7 @@ import com.github.javaparser.ast.type.ReferenceType;
 import com.github.javaparser.ast.type.Type;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metric.utilities.HalsteadComplexityMeasures;
 
 /**
  * @author Julio Vilmar Gesser
@@ -132,7 +133,12 @@ public final class MethodDeclaration extends BodyDeclaration<MethodDeclaration>
         v.visit(this, arg);
     }
 
-    public int getArrayCount() {
+    @Override
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+		super.halsteadNumbers(halsteadMetrics);
+	}
+
+	public int getArrayCount() {
         return arrayCount;
     }
 
