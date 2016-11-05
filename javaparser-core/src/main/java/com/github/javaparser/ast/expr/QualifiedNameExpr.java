@@ -24,6 +24,7 @@ package com.github.javaparser.ast.expr;
 import com.github.javaparser.Range;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metric.utilities.HalsteadComplexityMeasures;
 
 /**
  * @author Julio Vilmar Gesser
@@ -55,6 +56,12 @@ public final class QualifiedNameExpr extends NameExpr {
 
 	public NameExpr getQualifier() {
 		return qualifier;
+	}
+	
+	
+	@Override
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+		super.halsteadNumbers(halsteadMetrics);
 	}
 
 	public void setQualifier(final NameExpr qualifier) {

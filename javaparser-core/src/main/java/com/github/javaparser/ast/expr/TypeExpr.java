@@ -26,6 +26,7 @@ import com.github.javaparser.ast.nodeTypes.NodeWithType;
 import com.github.javaparser.ast.type.Type;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metric.utilities.HalsteadComplexityMeasures;
 
 /**
  * This class is just instantiated as scopes for MethodReferenceExpr nodes to encapsulate Types.
@@ -59,6 +60,11 @@ public class TypeExpr extends Expression implements NodeWithType<TypeExpr> {
     }
 
     @Override
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+		super.halsteadNumbers(halsteadMetrics);
+	}
+
+	@Override
     public TypeExpr setType(Type type) {
         this.type = type;
         setAsParentNodeOf(this.type);

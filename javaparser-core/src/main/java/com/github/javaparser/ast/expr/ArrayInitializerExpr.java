@@ -24,6 +24,7 @@ package com.github.javaparser.ast.expr;
 import com.github.javaparser.Range;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metric.utilities.HalsteadComplexityMeasures;
 
 import java.util.List;
 
@@ -58,7 +59,12 @@ public final class ArrayInitializerExpr extends Expression {
         v.visit(this, arg);
     }
 
-    public List<Expression> getValues() {
+    @Override
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+		super.halsteadNumbers(halsteadMetrics);
+	}
+
+	public List<Expression> getValues() {
         values = ensureNotNull(values);
         return values;
     }

@@ -78,27 +78,11 @@ public final class BinaryExpr extends Expression {
     
     @Override
     public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics){
-		// seteo el operador
-    	if (halsteadMetrics.operators.get(op.name()) != null){
-			halsteadMetrics.operators.put(op.name(), 
-				halsteadMetrics.operators.get(op.name()) + 1);
-		}
-		else{
-			halsteadMetrics.operators.put(op.name(), 1);
-		}
+    	halsteadMetrics.agregarOperador(op.name());
 		
-		// seteo los operandos
-	  	/*if (left instanceof VariableDeclarationExpr){
-	  		VariableDeclarationExpr
-	  		if (halsteadMetrics.operands.get(op.name()) != null){
-				halsteadMetrics.operands.put(op.name(), 
-					halsteadMetrics.operands.get(op.name()) + 1);
-			}
-			else{
-				halsteadMetrics.operands.put(op.name(), 1);
-			}
-	  	}*/
-	}
+		left.halsteadNumbers(halsteadMetrics);
+		right.halsteadNumbers(halsteadMetrics);
+    }	
 
     @Override
     public <R, A> R accept(GenericVisitor<R, A> v, A arg) {

@@ -179,24 +179,11 @@ public final class VariableDeclarationExpr extends Expression
 	@Override
 	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
 		//Estamos en Variable Declaration Exp, el Operator es el "="
-		for (VariableDeclarator varDeclarator : vars) {
-			/*
-			if(halsteadMetrics.operators.get("VariableDeclarationExpr") != null){
-				halsteadMetrics.operators.put("VariableDeclarationExpr", halsteadMetrics.operators.get("VariableDeclarationExpr")+1);
-			}else{
-				halsteadMetrics.operators.put("VariableDeclarationExpr", 1);
+		for (VariableDeclarator varDeclarator : vars) {			
+			Expression exp = varDeclarator.getInit();
+			if (exp != null){
+				exp.halsteadNumbers(halsteadMetrics);			
 			}
-			
-			String unparsed = varDeclarator.getId().getName(); //El literal de la variable declarada.
-			
-			if(halsteadMetrics.operands.get(unparsed)!=null){
-				halsteadMetrics.operands.put(unparsed, halsteadMetrics.operands.get(unparsed)+1);
-			}else{
-				halsteadMetrics.operands.put(unparsed, 1);
-			}
-			*/
-			
-			varDeclarator.getInit().halsteadNumbers(halsteadMetrics);
 		}
 	}   
 }

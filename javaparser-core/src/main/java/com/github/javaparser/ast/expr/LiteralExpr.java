@@ -22,6 +22,9 @@
 package com.github.javaparser.ast.expr;
 
 import com.github.javaparser.Range;
+import com.github.javaparser.ast.visitor.GenericVisitor;
+import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metric.utilities.HalsteadComplexityMeasures;
 
 /**
  * @author Julio Vilmar Gesser
@@ -33,5 +36,17 @@ public abstract class LiteralExpr extends Expression {
 
 	public LiteralExpr(Range range) {
 		super(range);
+	}
+
+	@Override
+	public <R, A> R accept(GenericVisitor<R, A> v, A arg) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <A> void accept(VoidVisitor<A> v, A arg) {
+		// TODO Auto-generated method stub
+		
 	}
 }
