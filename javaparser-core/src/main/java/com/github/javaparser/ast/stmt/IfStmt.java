@@ -25,7 +25,7 @@ import com.github.javaparser.Range;
 import com.github.javaparser.ast.expr.Expression;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
-import com.github.javaparser.metric.utilities.HalsteadComplexityMeasures;
+import com.github.javaparser.metrics.utilities.HalsteadComplexityMeasures;
 
 /**
  * @author Julio Vilmar Gesser
@@ -68,8 +68,6 @@ public final class IfStmt extends Statement {
 		halsteadMetrics.agregarOperador("if");
 		
 		condition.halsteadNumbers(halsteadMetrics);
-		halsteadMetrics.agregarOperador("(");
-		halsteadMetrics.agregarOperador(")");
 		
 		if (thenStmt != null){
 			thenStmt.halsteadNumbers(halsteadMetrics);

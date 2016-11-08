@@ -30,7 +30,7 @@ import com.github.javaparser.ast.expr.Expression;
 import com.github.javaparser.ast.nodeTypes.NodeWithBody;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
-import com.github.javaparser.metric.utilities.HalsteadComplexityMeasures;
+import com.github.javaparser.metrics.utilities.HalsteadComplexityMeasures;
 
 /**
  * @author Julio Vilmar Gesser
@@ -80,8 +80,6 @@ public final class ForStmt extends Statement implements NodeWithBody<ForStmt> {
 	@Override
 	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
 		halsteadMetrics.agregarOperador("for");
-		halsteadMetrics.agregarOperador("(");
-		halsteadMetrics.agregarOperador(")");
 		
 		// analizo el inicializador del for
 		for (Expression exp: init){
