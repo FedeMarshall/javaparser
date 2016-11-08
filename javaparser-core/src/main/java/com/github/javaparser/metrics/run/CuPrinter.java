@@ -3,6 +3,8 @@ import java.io.FileInputStream;
 
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.metrics.kumo.ExecuteGeneratorOutputHtmlFile;
+import com.github.javaparser.metrics.kumo.HalsteadMetricsBean;
 import com.github.javaparser.metrics.utilities.HalsteadComplexityMeasures;
 
 
@@ -34,5 +36,19 @@ public class CuPrinter {
         System.out.println(halsteadMeasures.effort());
         System.out.println(halsteadMeasures);
         
+        System.out.println("Creando Word Cloud!!!");
+        
+		HalsteadMetricsBean halsteadMetric = new HalsteadMetricsBean();
+		halsteadMetric.setOperatorCount(halsteadMeasures.operatorCount);
+		halsteadMetric.setOperandCount(halsteadMeasures.operandCount);
+		halsteadMetric.setUniqueOperatorCount(halsteadMeasures.uniqueOperatorCount);
+		halsteadMetric.setUniqueOperandCount(halsteadMeasures.uniqueOperandCount);
+		halsteadMetric.setVocabulary(halsteadMeasures.vocabulary());
+		halsteadMetric.setLength(halsteadMeasures.length());
+		halsteadMetric.setVolume(halsteadMeasures.volume());
+		halsteadMetric.setDifficulty(halsteadMeasures.difficulty());
+		halsteadMetric.setEffort(halsteadMeasures.effort());
+		
+		ExecuteGeneratorOutputHtmlFile.execute(halsteadMetric);        
     }
 }
