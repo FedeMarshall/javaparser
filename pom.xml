@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
     <modules>
         <module>javaparser-core</module>
-        <module>javaparser-testing</module>
+        
     </modules>
 
 	<groupId>com.github.javaparser</groupId>
