@@ -24,7 +24,7 @@ package com.github.javaparser.ast.expr;
 import com.github.javaparser.Range;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
-import com.github.javaparser.metric.utilities.HalsteadComplexityMeasures;
+import com.github.javaparser.metrics.utilities.HalsteadComplexityMeasures;
 
 /**
  * @author Julio Vilmar Gesser

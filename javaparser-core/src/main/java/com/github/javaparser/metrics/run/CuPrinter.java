@@ -3,7 +3,7 @@ import java.io.FileInputStream;
 
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
-import com.github.javaparser.metric.utilities.HalsteadComplexityMeasures;
+import com.github.javaparser.metrics.utilities.HalsteadComplexityMeasures;
 
 
 public class CuPrinter {

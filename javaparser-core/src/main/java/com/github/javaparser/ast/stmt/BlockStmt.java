@@ -29,7 +29,7 @@ import com.github.javaparser.Range;
 import com.github.javaparser.ast.nodeTypes.NodeWithStatements;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
-import com.github.javaparser.metric.utilities.HalsteadComplexityMeasures;
+import com.github.javaparser.metrics.utilities.HalsteadComplexityMeasures;
 
 /**
  * @author Julio Vilmar Gesser
@@ -61,13 +61,9 @@ public final class BlockStmt extends Statement implements NodeWithStatements<Blo
     }
 
     @Override
-	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
-    	halsteadMetrics.agregarOperador("{");
-    	halsteadMetrics.agregarOperador("}");
-    	
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {    	
     	for (Statement s: stmts){
     		s.halsteadNumbers(halsteadMetrics);
-    		halsteadMetrics.agregarOperador(";");
     	}
 	}
 

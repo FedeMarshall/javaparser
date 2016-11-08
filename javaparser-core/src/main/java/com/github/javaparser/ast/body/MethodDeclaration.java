@@ -46,7 +46,7 @@ import com.github.javaparser.ast.type.ReferenceType;
 import com.github.javaparser.ast.type.Type;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
-import com.github.javaparser.metric.utilities.HalsteadComplexityMeasures;
+import com.github.javaparser.metrics.utilities.HalsteadComplexityMeasures;
 
 /**
  * @author Julio Vilmar Gesser
