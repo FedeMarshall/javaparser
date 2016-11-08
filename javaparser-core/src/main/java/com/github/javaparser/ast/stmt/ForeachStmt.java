@@ -28,6 +28,7 @@ import com.github.javaparser.ast.expr.VariableDeclarationExpr;
 import com.github.javaparser.ast.nodeTypes.NodeWithBody;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metrics.utilities.HalsteadComplexityMeasures;
 
 /**
  * @author Julio Vilmar Gesser
@@ -80,6 +81,17 @@ public final class ForeachStmt extends Statement implements NodeWithBody<Foreach
 	@Override
 	public <A> void accept(final VoidVisitor<A> v, final A arg) {
 		v.visit(this, arg);
+	}
+
+	@Override
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+		halsteadMetrics.agregarOperador("for");
+		
+		iterable.halsteadNumbers(halsteadMetrics);
+		
+		if (body != null){
+			body.halsteadNumbers(halsteadMetrics);
+		}
 	}
 
 	@Override
