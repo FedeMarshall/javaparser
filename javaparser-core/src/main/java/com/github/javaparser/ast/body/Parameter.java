@@ -35,6 +35,7 @@ import com.github.javaparser.ast.nodeTypes.NodeWithType;
 import com.github.javaparser.ast.type.Type;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metrics.utilities.HalsteadComplexityMeasures;
 
 import static com.github.javaparser.utils.Utils.ensureNotNull;
 
@@ -100,6 +101,13 @@ public final class Parameter extends Node implements NodeWithType<Parameter>, No
     }
 
     @Override
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+		type.halsteadNumbers(halsteadMetrics);
+		
+		id.halsteadNumbers(halsteadMetrics);
+	}
+
+	@Override
     public Type getType() {
         return type;
     }

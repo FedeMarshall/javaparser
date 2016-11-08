@@ -25,6 +25,7 @@ import com.github.javaparser.Range;
 import com.github.javaparser.ast.expr.Expression;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metrics.utilities.HalsteadComplexityMeasures;
 
 import java.util.List;
 
@@ -63,6 +64,18 @@ public final class SwitchStmt extends Statement {
 	@Override
 	public <A> void accept(final VoidVisitor<A> v, final A arg) {
 		v.visit(this, arg);
+	}
+
+	@Override
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+		halsteadMetrics.agregarOperador("switch");
+		
+		selector.halsteadNumbers(halsteadMetrics);
+		
+		for (SwitchEntryStmt _case: entries){
+			halsteadMetrics.agregarOperador("case");
+			_case.halsteadNumbers(halsteadMetrics);
+		}
 	}
 
 	public List<SwitchEntryStmt> getEntries() {

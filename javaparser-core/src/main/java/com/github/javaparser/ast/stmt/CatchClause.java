@@ -31,6 +31,7 @@ import com.github.javaparser.ast.nodeTypes.NodeWithBlockStmt;
 import com.github.javaparser.ast.type.Type;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metrics.utilities.HalsteadComplexityMeasures;
 
 import java.util.EnumSet;
 import java.util.List;
@@ -69,7 +70,14 @@ public final class CatchClause extends Node implements NodeWithBlockStmt<CatchCl
 		v.visit(this, arg);
 	}
 
-    /**
+    @Override
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+		
+    	param.halsteadNumbers(halsteadMetrics);
+		catchBlock.halsteadNumbers(halsteadMetrics);
+	}
+
+	/**
      * Use {@link #getBody()} instead
      * 
      * @return

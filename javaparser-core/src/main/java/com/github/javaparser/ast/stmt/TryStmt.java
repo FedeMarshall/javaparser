@@ -24,6 +24,7 @@ package com.github.javaparser.ast.stmt;
 import com.github.javaparser.Range;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metrics.utilities.HalsteadComplexityMeasures;
 import com.github.javaparser.ast.expr.VariableDeclarationExpr;
 
 import java.util.List;
@@ -70,6 +71,25 @@ public final class TryStmt extends Statement {
 	@Override
 	public <A> void accept(final VoidVisitor<A> v, final A arg) {
 		v.visit(this, arg);
+	}
+
+	@Override
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+		halsteadMetrics.agregarOperador("try");
+		if (tryBlock != null){
+			// supongo que nunca deberia llegar aca, pero por las dudas...
+			tryBlock.halsteadNumbers(halsteadMetrics);			
+		}
+		
+		for (CatchClause cc: catchs){
+			halsteadMetrics.agregarOperador("catch");
+			cc.halsteadNumbers(halsteadMetrics);
+		}
+		
+		if (finallyBlock != null){
+			halsteadMetrics.agregarOperador("finally");
+			finallyBlock.halsteadNumbers(halsteadMetrics);
+		}
 	}
 
 	public List<CatchClause> getCatchs() {

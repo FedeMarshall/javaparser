@@ -180,6 +180,8 @@ public final class VariableDeclarationExpr extends Expression
 	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
 		//Estamos en Variable Declaration Exp, el Operator es el "="
 		for (VariableDeclarator varDeclarator : vars) {			
+			varDeclarator.getId().halsteadNumbers(halsteadMetrics);
+			
 			Expression exp = varDeclarator.getInit();
 			if (exp != null){
 				exp.halsteadNumbers(halsteadMetrics);			
