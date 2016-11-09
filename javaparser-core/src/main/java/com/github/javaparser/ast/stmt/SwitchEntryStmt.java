@@ -68,7 +68,12 @@ public final class SwitchEntryStmt extends Statement implements NodeWithStatemen
 
 	@Override
 	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
-		label.halsteadNumbers(halsteadMetrics);
+		if(label != null)
+			label.halsteadNumbers(halsteadMetrics);
+		else{
+			halsteadMetrics.agregarOperador("default");
+		}
+			
 		
 		for (Statement s: stmts){
 			s.halsteadNumbers(halsteadMetrics);

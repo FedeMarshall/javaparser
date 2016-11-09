@@ -17,7 +17,7 @@ import com.github.javaparser.metrics.utilities.HalsteadComplexityMeasures;
 
 public class CuPrinter {
 	
-	final static String originPath = "src/main/java/com/github/javaparser";
+	final static String originPath = "./javaparser-core/src/main/java/com/github/javaparser";
 
     public static void main(String[] args) throws Exception {
         /*
@@ -100,6 +100,16 @@ public class CuPrinter {
 
 	        // prints the resulting compilation unit to default system output
 	        System.out.println(cu.toString());
+	        HalsteadComplexityMeasures halsteadMeasures = new HalsteadComplexityMeasures(cu);
+	        // llamamamos al metodo de Node para ejecutar haltstead metrics
+	        halsteadMeasures.javaProgram.halsteadNumbers(halsteadMeasures);
+	        halsteadMeasures.calculateUniqueCounts();
+	        System.out.println(halsteadMeasures.vocabulary());
+	        System.out.println(halsteadMeasures.length());
+	        System.out.println(halsteadMeasures.volume());
+	        System.out.println(halsteadMeasures.difficulty());
+	        System.out.println(halsteadMeasures.effort());
+	        System.out.println(halsteadMeasures);
 
 
 		} catch (IOException ioe){
