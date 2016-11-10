@@ -16,6 +16,7 @@ import com.kennycason.kumo.WordFrequency;
 import com.kennycason.kumo.bg.CircleBackground;
 import com.kennycason.kumo.font.KumoFont;
 import com.kennycason.kumo.font.scale.LinearFontScalar;
+import com.kennycason.kumo.image.AngleGenerator;
 import com.kennycason.kumo.nlp.FrequencyAnalyzer;
 import com.kennycason.kumo.palette.ColorPalette;
 
@@ -56,6 +57,7 @@ public class KumoGeneratorOutputWordCloud {
 	    wordCloud.setBackground(new CircleBackground(300));
 	    wordCloud.setBackgroundColor(Color.WHITE);
 	    wordCloud.setColorPalette(buildRandomColorPalette(2));
+	    wordCloud.setAngleGenerator(new AngleGenerator(0));
 	    
 	    InputStream inp = new FileInputStream("kumo/font/OpenSansEmoji.ttf");
 	    wordCloud.setKumoFont(new KumoFont(inp));
@@ -100,6 +102,7 @@ public class KumoGeneratorOutputWordCloud {
     		
         	for (String key : wordFrecuencies.keySet()) {
         		wordFrequencies.add(new WordFrequency(key, wordFrecuencies.get(key)));
+        		
         	}
 		}
     
