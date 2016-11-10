@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ExecuteGeneratorOutputHtmlFile {
@@ -34,6 +35,15 @@ public class ExecuteGeneratorOutputHtmlFile {
 	}
 	
 	public static void execute(HalsteadMetricsBean halsteadMetric){
+		try {
+			KumoGeneratorOutputWordCloud.kumoGenerateOutputWordCloud("kumo/SalidaWordCloud/HalsteadWordCloud.png", halsteadMetric);
+			executeGenOutputHtmoFile();	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void execute(ArrayList<HalsteadMetricsBean> halsteadMetric){
 		try {
 			KumoGeneratorOutputWordCloud.kumoGenerateOutputWordCloud("kumo/SalidaWordCloud/HalsteadWordCloud.png", halsteadMetric);
 			executeGenOutputHtmoFile();	

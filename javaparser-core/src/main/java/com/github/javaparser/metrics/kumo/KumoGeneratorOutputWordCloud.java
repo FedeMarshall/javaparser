@@ -44,6 +44,30 @@ public class KumoGeneratorOutputWordCloud {
 	    
 	    wordCloud.writeToFile(fileWordCloudToWrite);
 	}
+	
+	public static void kumoGenerateOutputWordCloud(String fileWordCloudToWrite, ArrayList<HalsteadMetricsBean> halstedMetricsList) throws IOException{
+	    final FrequencyAnalyzer frequencyAnalyzer = new FrequencyAnalyzer();
+	    frequencyAnalyzer.setWordFrequenciesToReturn(600);
+	    frequencyAnalyzer.setMinWordLength(5);
+	    		
+	    final Dimension dimension = new Dimension(600, 600);
+	    final WordCloud wordCloud = new WordCloud(dimension, CollisionMode.PIXEL_PERFECT);
+	    wordCloud.setPadding(1);
+	    wordCloud.setBackground(new CircleBackground(300));
+	    wordCloud.setBackgroundColor(Color.WHITE);
+	    wordCloud.setColorPalette(buildRandomColorPalette(2));
+	    
+	    InputStream inp = new FileInputStream("kumo/font/OpenSansEmoji.ttf");
+	    wordCloud.setKumoFont(new KumoFont(inp));
+	    
+	    wordCloud.setFontScalar(new LinearFontScalar(8, 130));
+	    
+	    
+	    //wordCloud.build(buildWordFrequenciesByHashMap(halstedMetrics.getHalsteadWordFrecuency()));
+	    wordCloud.build(buildWordFrequenciesByHashMap(halstedMetricsList));
+	    
+	    wordCloud.writeToFile(fileWordCloudToWrite);
+	}
 
     private static ColorPalette buildRandomColorPalette(int n) {
         final Color[] colors = new Color[n];
@@ -68,6 +92,20 @@ public class KumoGeneratorOutputWordCloud {
     	}
     	return wordFrequencies;
     }
+    
+    private static List<WordFrequency> buildWordFrequenciesByHashMap(ArrayList<HalsteadMetricsBean> halstedList){
+    	final List<WordFrequency> wordFrequencies = new ArrayList<>();
+    	for (HalsteadMetricsBean halsteadMetricsBean : halstedList) {
+    		HashMap<String, Integer> wordFrecuencies = halsteadMetricsBean.getVolumenHalsteadWordFrecuency();
+    		
+        	for (String key : wordFrecuencies.keySet()) {
+        		wordFrequencies.add(new WordFrequency(key, wordFrecuencies.get(key)));
+        	}
+		}
+    
+    	return wordFrequencies;
+    }
+    
     
     private static final String[] EMOJIS = {
             "Vocabulario",

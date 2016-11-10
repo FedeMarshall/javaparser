@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class HalsteadMetricsBean {
 
+	private String nombreClass;
 	private int operatorCount;
 	private int operandCount;
 	private int uniqueOperatorCount; 
@@ -18,6 +19,12 @@ public class HalsteadMetricsBean {
 		HashMap<String, Integer> wordFrecuncy = new HashMap<String, Integer>();
 		getLargoWordFrecuency(wordFrecuncy);
 		getVolumenWordFrecuency(wordFrecuncy);
+		return wordFrecuncy;
+	}
+	
+	public HashMap<String, Integer> getVolumenHalsteadWordFrecuency(){
+		HashMap<String, Integer> wordFrecuncy = new HashMap<String, Integer>();
+		getVolumenWordFrecuency(nombreClass, wordFrecuncy);
 		return wordFrecuncy;
 	}
 		
@@ -46,6 +53,13 @@ public class HalsteadMetricsBean {
 		}
 		return wordFrecuncy;
 	}
+		
+	private HashMap<String, Integer> getVolumenWordFrecuency(String clasName, HashMap<String, Integer> wordFrecuncy){
+		Long value = Math.round((volume * 250) / 8000);
+		int frecuency = Integer.valueOf(value.intValue());
+		wordFrecuncy.put(clasName, frecuency);
+		return wordFrecuncy;
+	}
 	
 	private HashMap<String, Integer> getVolumenWordFrecuency(HashMap<String, Integer> wordFrecuncy){
 		Long value = Math.round((volume * 250) / 8000);
@@ -53,7 +67,15 @@ public class HalsteadMetricsBean {
 		wordFrecuncy.put("Volumen", frecuency);
 		return wordFrecuncy;
 	}
-	
+		
+	public String getNombreClass() {
+		return nombreClass;
+	}
+
+	public void setNombreClass(String nombreClass) {
+		this.nombreClass = nombreClass;
+	}
+
 	public int getOperatorCount() {
 		return operatorCount;
 	}

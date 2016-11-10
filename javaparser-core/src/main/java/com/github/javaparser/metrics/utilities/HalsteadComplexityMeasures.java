@@ -6,6 +6,7 @@ import com.github.javaparser.ast.CompilationUnit;
 public class HalsteadComplexityMeasures {
 	
 	public final CompilationUnit javaProgram;
+	public String nombreClase;
 	public HashMap<String, Integer> operands = new HashMap<String, Integer>();
 	public HashMap<String, Integer> operators = new HashMap<String, Integer>();
 	public int operatorCount, operandCount, uniqueOperatorCount, uniqueOperandCount;
