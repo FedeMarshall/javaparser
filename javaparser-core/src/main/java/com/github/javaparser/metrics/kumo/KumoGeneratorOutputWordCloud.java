@@ -56,7 +56,8 @@ public class KumoGeneratorOutputWordCloud {
 	    wordCloud.setPadding(1);
 	    wordCloud.setBackground(new CircleBackground(300));
 	    wordCloud.setBackgroundColor(Color.WHITE);
-	    wordCloud.setColorPalette(buildRandomColorPalette(2));
+	    //wordCloud.setColorPalette(buildRandomColorPalette(2));
+	    wordCloud.setColorPalette(buildBlackColorPalette(2));
 	    wordCloud.setAngleGenerator(new AngleGenerator(0));
 	    
 	    InputStream inp = new FileInputStream("kumo/font/OpenSansEmoji.ttf");
@@ -75,6 +76,14 @@ public class KumoGeneratorOutputWordCloud {
         final Color[] colors = new Color[n];
         for(int i = 0; i < colors.length; i++) {
             colors[i] = new Color(RANDOM.nextInt(230) + 25, RANDOM.nextInt(230) + 25, RANDOM.nextInt(230) + 25);
+        }
+        return new ColorPalette(colors);
+    }
+    
+    private static ColorPalette buildBlackColorPalette(int n) {
+        final Color[] colors = new Color[n];
+        for(int i = 0; i < colors.length; i++) {
+            colors[i] = new Color(0x00000);
         }
         return new ColorPalette(colors);
     }
