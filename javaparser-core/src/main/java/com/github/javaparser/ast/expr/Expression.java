@@ -23,6 +23,9 @@ package com.github.javaparser.ast.expr;
 
 import com.github.javaparser.Range;
 import com.github.javaparser.ast.Node;
+import com.github.javaparser.ast.visitor.GenericVisitor;
+import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metrics.utilities.HalsteadComplexityMeasures;
 
 /**
  * @author Julio Vilmar Gesser
@@ -36,4 +39,20 @@ public abstract class Expression extends Node {
 		super(range);
 	}
 
+	@Override
+	public <R, A> R accept(GenericVisitor<R, A> v, A arg) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <A> void accept(VoidVisitor<A> v, A arg) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+		super.halsteadNumbers(halsteadMetrics);
+	}
 }

@@ -26,6 +26,7 @@ import com.github.javaparser.ast.nodeTypes.NodeWithType;
 import com.github.javaparser.ast.type.Type;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metrics.utilities.HalsteadComplexityMeasures;
 
 /**
  * @author Julio Vilmar Gesser
@@ -60,7 +61,18 @@ public final class CastExpr extends Expression implements NodeWithType<CastExpr>
         v.visit(this, arg);
     }
 
-    public Expression getExpr() {
+    
+
+	@Override
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+		halsteadMetrics.agregarOperador("(" + type + ")");
+		
+		if (expr != null){
+			expr.halsteadNumbers(halsteadMetrics);
+		}
+	}
+
+	public Expression getExpr() {
         return expr;
     }
 
