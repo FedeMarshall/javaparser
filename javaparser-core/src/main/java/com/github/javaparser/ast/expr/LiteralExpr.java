@@ -47,6 +47,12 @@ public abstract class LiteralExpr extends Expression {
 	@Override
 	public <A> void accept(VoidVisitor<A> v, A arg) {
 		// TODO Auto-generated method stub
-		
 	}
+
+	@Override
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+		super.halsteadNumbers(halsteadMetrics);
+	}
+	
+	
 }
