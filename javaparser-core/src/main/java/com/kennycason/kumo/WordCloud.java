@@ -257,18 +257,7 @@ public class WordCloud {
         //KumoFont kumoFontAux = new KumoFont(kumoFont.getFont().DIALOG, FontWeight.BOLD);
         
         KumoFont kumoFontAux = getKumoFontByDificulty(0, maxDifficulty, wordFrequency.getDifficulty());
-        
-        /*
-        if(wordFrequency.getFrequency() < 400){
-        	kumoFontAux = new KumoFont(kumoFont.getFont().MONOSPACED, FontWeight.BOLD);
-        }
-        if(wordFrequency.getFrequency() >= 400 && wordFrequency.getFrequency() < 500){
-        	kumoFontAux = new KumoFont(kumoFont.getFont().SERIF, FontWeight.PLAIN);
-        }
-        if(wordFrequency.getFrequency() >= 500){
-        	kumoFontAux = new KumoFont(kumoFont.getFont().DIALOG, FontWeight.ITALIC);
-        }*/
-        
+                
         final Font font = kumoFontAux.getFont().deriveFont(fontHeight);
         //jfernandez fin
         

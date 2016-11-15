@@ -1,7 +1,5 @@
 package com.kennycason.kumo;
 
-import java.awt.Color;
-
 /**
  * Created by kenny on 6/29/14.
  */
