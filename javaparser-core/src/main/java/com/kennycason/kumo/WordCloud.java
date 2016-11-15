@@ -334,10 +334,10 @@ public class WordCloud {
     	final double finalSecondRange = maxNumToCalcRange * toCalcSecondRange;
     	
         if(dificulty < finalFirstRange){
-        	return new KumoFont(kumoFont.getFont().MONOSPACED, FontWeight.ITALIC);
+        	return new KumoFont(kumoFont.getFont().DIALOG_INPUT, FontWeight.ITALIC);
         }
         if(dificulty >= finalFirstRange && dificulty < finalSecondRange){
-        	return new KumoFont(kumoFont.getFont().SERIF, FontWeight.PLAIN);
+        	return new KumoFont(kumoFont.getFont().DIALOG_INPUT, FontWeight.PLAIN);
         }
         //->dificulty >= 500
         return new KumoFont(kumoFont.getFont().DIALOG_INPUT, FontWeight.BOLD);
