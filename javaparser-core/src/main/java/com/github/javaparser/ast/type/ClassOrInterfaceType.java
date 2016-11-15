@@ -29,6 +29,7 @@ import com.github.javaparser.ast.nodeTypes.NodeWithAnnotations;
 import com.github.javaparser.ast.nodeTypes.NodeWithName;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metrics.utilities.HalsteadComplexityMeasures;
 
 /**
  * @author Julio Vilmar Gesser
@@ -69,6 +70,11 @@ public final class ClassOrInterfaceType extends Type<ClassOrInterfaceType> imple
     }
 
     @Override
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+		halsteadMetrics.agregarOperando(name);
+	}
+
+	@Override
     public String getName() {
         return name;
     }

@@ -106,6 +106,7 @@ public abstract class Node implements Cloneable {
      */
 	//public abstract void halteadNumbers(Map<String, Integer> operands, Map<String, Integer> operators);
 	
+    
 	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics){
 		for (Node node : childrenNodes) {
 			node.halsteadNumbers(halsteadMetrics);

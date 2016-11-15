@@ -25,6 +25,7 @@ import static com.github.javaparser.utils.Utils.ensureNotNull;
 
 import java.util.EnumSet;
 import java.util.List;
+import java.util.jar.Attributes.Name;
 
 import com.github.javaparser.Range;
 import com.github.javaparser.ast.Modifier;
@@ -121,6 +122,7 @@ public final class ClassOrInterfaceDeclaration extends TypeDeclaration<ClassOrIn
 
     @Override
 	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+    	halsteadMetrics.nombreClase = this.getName();
 		super.halsteadNumbers(halsteadMetrics);
 	}
 

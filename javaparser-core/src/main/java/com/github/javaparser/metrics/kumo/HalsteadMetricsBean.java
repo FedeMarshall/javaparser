@@ -1,9 +1,10 @@
 package com.github.javaparser.metrics.kumo;
 
-import java.util.HashMap;
+import java.awt.Color;
 
 public class HalsteadMetricsBean {
 
+	private String nombreClass;
 	private int operatorCount;
 	private int operandCount;
 	private int uniqueOperatorCount; 
@@ -13,47 +14,38 @@ public class HalsteadMetricsBean {
 	private double volume;
 	private double difficulty;
 	private double effort;
+	private Color color;
 	
-	public HashMap<String, Integer> getHalsteadWordFrecuency(){
-		HashMap<String, Integer> wordFrecuncy = new HashMap<String, Integer>();
-		getLargoWordFrecuency(wordFrecuncy);
-		getVolumenWordFrecuency(wordFrecuncy);
-		return wordFrecuncy;
+	public int getVocabularyNormalized(){
+		return vocabulary;
+	}
+	
+	public int getLengthNormalized(){
+		return length;
 	}
 		
-	private HashMap<String, Integer> getLargoWordFrecuency(HashMap<String, Integer> wordFrecuncy){
-	
-		if(length <= 100){
-			wordFrecuncy.put("Pequeño", 250);
-			wordFrecuncy.put("Mediano", 200);
-			wordFrecuncy.put("Grande", 100);
-			wordFrecuncy.put("Muy Grande",50);
-		}else if(length > 100 && length <= 500){
-			wordFrecuncy.put("Pequeño", 100);
-			wordFrecuncy.put("Mediano", 250);
-			wordFrecuncy.put("Grande", 100);
-			wordFrecuncy.put("Muy Grande",50);
-		}else if(length > 500 && length <= 1500){
-			wordFrecuncy.put("Pequeño", 100);
-			wordFrecuncy.put("Mediano", 150);
-			wordFrecuncy.put("Grande", 250);
-			wordFrecuncy.put("Muy Grande",100);
-		}else{//length > 1500
-			wordFrecuncy.put("Pequeño", 50);
-			wordFrecuncy.put("Mediano", 50);
-			wordFrecuncy.put("Grande", 100);
-			wordFrecuncy.put("Muy Grande",250);
-		}
-		return wordFrecuncy;
-	}
-	
-	private HashMap<String, Integer> getVolumenWordFrecuency(HashMap<String, Integer> wordFrecuncy){
+	public int getVolumenNormalized(){
 		Long value = Math.round((volume * 250) / 8000);
 		int frecuency = Integer.valueOf(value.intValue());
-		wordFrecuncy.put("Volumen", frecuency);
-		return wordFrecuncy;
+		return frecuency;
+	}
+		
+	public double getDifficultyNormalized(){
+		return difficulty;
 	}
 	
+	public double getEffortNormalized(){
+		return effort;
+	}
+	
+	public String getNombreClass() {
+		return nombreClass;
+	}
+
+	public void setNombreClass(String nombreClass) {
+		this.nombreClass = nombreClass;
+	}
+
 	public int getOperatorCount() {
 		return operatorCount;
 	}
@@ -107,5 +99,11 @@ public class HalsteadMetricsBean {
 	}
 	public void setEffort(double effort) {
 		this.effort = effort;
+	}
+	public Color getColor() {
+		return color;
+	}
+	public void setColor(Color color) {
+		this.color = color;
 	}
 }

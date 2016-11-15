@@ -26,6 +26,7 @@ import com.github.javaparser.ast.expr.Expression;
 import com.github.javaparser.ast.nodeTypes.NodeWithBlockStmt;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metrics.utilities.HalsteadComplexityMeasures;
 
 /**
  * @author Julio Vilmar Gesser
@@ -60,8 +61,21 @@ public final class SynchronizedStmt extends Statement implements NodeWithBlockSt
     public <A> void accept(final VoidVisitor<A> v, final A arg) {
         v.visit(this, arg);
     }
+    
+    @Override
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+		halsteadMetrics.agregarOperador("synchronized");
+		
+		if (expr != null){
+			expr.halsteadNumbers(halsteadMetrics);		
+		}
+		
+		if (block != null){
+			block.halsteadNumbers(halsteadMetrics);
+		}
+	}
 
-    /**
+	/**
      * @deprecated use {@link #getBody()}
      * @return
      */
