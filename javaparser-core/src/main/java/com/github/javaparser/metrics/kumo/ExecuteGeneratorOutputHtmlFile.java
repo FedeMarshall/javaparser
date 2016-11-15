@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ExecuteGeneratorOutputHtmlFile {
@@ -16,24 +17,7 @@ public class ExecuteGeneratorOutputHtmlFile {
 	final static String destinoPath = "salidaHtml/";
 	final static String originWordCloud = "kumo/SalidaWordCloud/HalsteadWordCloud.png";
 		
-	public static void main(String[] args) throws IOException {	
-		
-		HalsteadMetricsBean halsteadMetric = new HalsteadMetricsBean();
-		halsteadMetric.setOperatorCount(48);
-		halsteadMetric.setOperandCount(32);
-		halsteadMetric.setUniqueOperatorCount(15);
-		halsteadMetric.setUniqueOperandCount(11);
-		halsteadMetric.setVocabulary(26);
-		halsteadMetric.setLength(80);
-		halsteadMetric.setVolume(376.0351774512874);
-		halsteadMetric.setDifficulty(21.818181818181817);
-		halsteadMetric.setEffort(8204.403871664452);
-		
-		KumoGeneratorOutputWordCloud.kumoGenerateOutputWordCloud("kumo/SalidaWordCloud/HalsteadWordCloud.png", halsteadMetric);
-		executeGenOutputHtmoFile();	
-	}
-	
-	public static void execute(HalsteadMetricsBean halsteadMetric){
+	public static void execute(ArrayList<HalsteadMetricsBean> halsteadMetric){
 		try {
 			KumoGeneratorOutputWordCloud.kumoGenerateOutputWordCloud("kumo/SalidaWordCloud/HalsteadWordCloud.png", halsteadMetric);
 			executeGenOutputHtmoFile();	

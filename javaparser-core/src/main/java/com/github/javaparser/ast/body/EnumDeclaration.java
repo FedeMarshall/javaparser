@@ -33,6 +33,7 @@ import com.github.javaparser.ast.nodeTypes.NodeWithImplements;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
 import com.github.javaparser.ast.visitor.GenericVisitor;
 import com.github.javaparser.ast.visitor.VoidVisitor;
+import com.github.javaparser.metrics.utilities.HalsteadComplexityMeasures;
 
 /**
  * @author Julio Vilmar Gesser
@@ -110,6 +111,12 @@ public final class EnumDeclaration extends TypeDeclaration<EnumDeclaration>
         enumConstant.setParentNode(this);
         return enumConstant;
     }
+
+	@Override
+	public void halsteadNumbers(HalsteadComplexityMeasures halsteadMetrics) {
+		halsteadMetrics.nombreClase = this.getName();
+		super.halsteadNumbers(halsteadMetrics);
+	}
 
 
 }
