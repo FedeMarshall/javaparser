@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.github.javaparser.JavaParser;
+import com.github.javaparser.ParseProblemException;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.metrics.kumo.ExecuteGeneratorOutputHtmlFile;
 import com.github.javaparser.metrics.kumo.HalsteadMetricsBean;
@@ -45,15 +46,18 @@ public class CuPrinter {
 
 		try {
 	        FileInputStream in = new FileInputStream(f1);
-	        
-	        CompilationUnit cu;
+	        Boolean proceso = true;
+	        CompilationUnit cu = null;
 	        try {
 	            // parse the file
 	            cu = JavaParser.parse(in);
+	        }catch(Exception e){
+	        	proceso = false;
 	        } finally {
 	            in.close();
 	        }
 
+	        if(proceso){
 	        // prints the resulting compilation unit to default system output
 	        System.out.println(cu.toString());
 	        
@@ -68,6 +72,9 @@ public class CuPrinter {
 	        System.out.println(halsteadMeasures.effort());
 	        System.out.println(halsteadMeasures);
 	        
+	        if(halsteadMeasures.nombreClase == null)
+	        	return;
+	        
 			HalsteadMetricsBean halsteadMetric = new HalsteadMetricsBean();
 			halsteadMetric.setNombreClass(halsteadMeasures.nombreClase);
 			halsteadMetric.setOperatorCount(halsteadMeasures.operatorCount);
@@ -81,6 +88,7 @@ public class CuPrinter {
 			halsteadMetric.setEffort(halsteadMeasures.effort());
 			
 			halsteadList.add(halsteadMetric);
+	        }
 		
 		} catch (IOException ioe){
 			ioe.printStackTrace();
