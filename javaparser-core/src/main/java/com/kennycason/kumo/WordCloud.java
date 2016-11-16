@@ -303,6 +303,12 @@ public class WordCloud {
         return Lambda.min(wordFrequencies, on(WordFrequency.class).getDifficulty());
     }
     
+    /**
+     * @param minNumToCalcRange
+     * @param maxNumToCalcRange
+     * @param effort
+     * @return
+     */
     private ColorPalette getColorByEffort(double minNumToCalcRange, double maxNumToCalcRange, double effort){
     	final double toCalcFirstRange = 0.2;
     	final double toCalcSecondRange = 0.4;
@@ -317,20 +323,15 @@ public class WordCloud {
     	
         final Color[] colors = new Color[1];
     	
-    	if(between(effort, minNumToCalcRange, finalFirstRange)){
-    		//blue = (int) ((255 * (effort/maxNumToCalcRange)) > 255 ? 255 : (255 * (effort/maxNumToCalcRange)) < 160 ? 160 : (255 * (effort/maxNumToCalcRange)));
-    		blue = (int) (255 * (effort/minNumToCalcRange)) <= 255 ? 255 : (int) (1/(255 * (effort/minNumToCalcRange)));
-            colors[0] = new Color(red, green, blue);//Azul
+    	if(between(effort, minNumToCalcRange, finalFirstRange)){    		
+    		blue = (int) (255 * (effort/finalFirstRange)) == 255 ? 0 : 255 - (int) (255 * (effort/finalFirstRange));
+             colors[0] = new Color(red, green, blue);//Azul
             return new ColorPalette(colors);	
-    	}
-    	
-    	if(between(effort, finalFirstRange, finalSecondRange)){
-            colors[0] = new Color(0,0,0);//Negro
+    	} else{
+    		red = (int) (255 * (effort/maxNumToCalcRange));
+            colors[0] = new Color(red, green, blue);//Negro
             return new ColorPalette(colors);
-    	}
-    	
-    	colors[0] = new Color(255,0,0);
-        return new ColorPalette(colors);
+    	}    	
     }
     
     public KumoFont getKumoFontByDificulty(double minNumToCalcRange, double maxNumToCalcRange, double dificulty){
