@@ -318,8 +318,9 @@ public class WordCloud {
         final Color[] colors = new Color[1];
     	
     	if(between(effort, minNumToCalcRange, finalFirstRange)){
-    		blue = (int) ((255 * (effort/maxNumToCalcRange)) > 255 ? 255 : (255 * (effort/maxNumToCalcRange)) < 160 ? 160 : (255 * (effort/maxNumToCalcRange)));
-            colors[0] = new Color(red, 0+blue, blue);//Azul
+    		//blue = (int) ((255 * (effort/maxNumToCalcRange)) > 255 ? 255 : (255 * (effort/maxNumToCalcRange)) < 160 ? 160 : (255 * (effort/maxNumToCalcRange)));
+    		blue = (int) (255 * (effort/minNumToCalcRange)) <= 255 ? 255 : (int) (1/(255 * (effort/minNumToCalcRange)));
+            colors[0] = new Color(red, green, blue);//Azul
             return new ColorPalette(colors);	
     	}
     	
