@@ -87,7 +87,8 @@ public final class ForStmt extends Statement implements NodeWithBody<ForStmt> {
 		}
 		
 		// analizo el comparador del for
-		compare.halsteadNumbers(halsteadMetrics);
+		if(compare != null)
+			compare.halsteadNumbers(halsteadMetrics);
 		
 		// analizo el incrementado del for
 		for (Expression exp: update){
